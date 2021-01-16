@@ -1,7 +1,7 @@
 <template>
   <h1>{{ msg }}</h1>
 
-  <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
+  <el-button icon="el-icon-success" type="primary" @click="count++">count is: {{ count }}</el-button>
 
   <p>
     Edit
