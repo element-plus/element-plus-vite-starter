@@ -1,17 +1,18 @@
 {
   "name": "element-plus-vite-starter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "dependencies": {
     "element-plus": "latest",
-    "vue": "^3.0.5"
+    "vue": "^3.2.6"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.0.4",
-    "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.0.0-beta.12"
+    "@vitejs/plugin-vue": "^1.6.0",
+    "@vue/compiler-sfc": "^3.2.6",
+    "vite": "^2.5.3"
   }
 }
