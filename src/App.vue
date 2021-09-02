@@ -3,8 +3,8 @@
   <HelloWorld msg="Hello Vue 3.0 + Element Plus + Vite" />
 </template>
 
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup lang="ts">
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <style>
@@ -17,6 +17,6 @@ import HelloWorld from './components/HelloWorld.vue'
   margin-top: 60px;
 }
 .element-plus-logo {
-  width: 50%
+  width: 50%;
 }
 </style>
