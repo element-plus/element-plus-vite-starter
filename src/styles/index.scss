@@ -1,0 +1,16 @@
+@import "~/styles/element-variables.scss";
+@import "element-plus/theme-chalk/src/index.scss";
+
+@debug $--colors;
+
+// :root {
+//   --el-color-primary: red;
+// }
+
+body {
+  margin: 0;
+}
+
+a {
+  color: var(--el-color-primary);
+}

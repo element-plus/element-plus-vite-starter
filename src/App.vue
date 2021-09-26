@@ -1,9 +1,11 @@
 <template>
+  <BaseHeader />
   <img alt="Vue logo" class="element-plus-logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3.0 + Element Plus + Vite" />
 </template>
 
 <script setup lang="ts">
+import BaseHeader from "./components/layouts/BaseHeader.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
@@ -14,7 +16,6 @@ import HelloWorld from "./components/HelloWorld.vue";
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .element-plus-logo {
   width: 50%;
