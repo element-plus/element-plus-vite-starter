@@ -1,0 +1,6 @@
+// You should use them in scss, because we calculate it by sass.
+// comment next line to use default color
+@import "./var.scss";
+@import "element-plus/theme-chalk/src/index.scss";
+
+@debug $--colors;

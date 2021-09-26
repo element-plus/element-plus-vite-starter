@@ -15,14 +15,19 @@ const input = ref("element-plus");
     more information.
   </p>
 
-  <el-button icon="el-icon-success" type="primary" @click="count++"
-    >count is: {{ count }}
-  </el-button>
-
+  <!-- example components -->
+  <el-button type="primary" @click="count++">count is: {{ count }} </el-button>
   <el-input v-model="input" style="width: 200px; margin: 20px" />
+  <el-tag>Tag 1</el-tag>
+
+  <p>For example, we can custom primary color to 'green'.</p>
 
   <p>
     Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
+    <code>components/HelloWorld.vue</code> to test components.
+  </p>
+  <p>
+    Edit
+    <code>styles/element/var.scss</code> to test scss variables.
   </p>
 </template>
