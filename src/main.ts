@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 
 import "~/styles/element/index.scss";
+
 import ElementPlus from "element-plus";
 // import all element css, uncommented next line
 // import "element-plus/dist/index.css";

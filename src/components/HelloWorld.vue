@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ElButton, ElTag, ElInput } from "element-plus";
 import { ref } from "vue";
 
 defineProps<{ msg: string }>();
@@ -17,6 +18,11 @@ const input = ref("element-plus");
 
   <!-- example components -->
   <el-button type="primary" @click="count++">count is: {{ count }} </el-button>
+  <el-button type="success" @click="count++">count is: {{ count }} </el-button>
+  <el-button type="warning" @click="count++">count is: {{ count }} </el-button>
+  <el-button type="danger" @click="count++">count is: {{ count }} </el-button>
+  <el-button type="info" @click="count++">count is: {{ count }} </el-button>
+  <br />
   <el-input v-model="input" style="width: 200px; margin: 20px" />
   <el-tag>Tag 1</el-tag>
 
@@ -29,5 +35,11 @@ const input = ref("element-plus");
   <p>
     Edit
     <code>styles/element/var.scss</code> to test scss variables.
+  </p>
+
+<p>
+  Full Example: <a href="https://github.com/element-plus/element-plus-vite-starter" target="_blank">element-plus-vite-starter</a>
+  |
+  On demand Example: <a href="https://github.com/element-plus/unplugin-element-plus" target="_blank">unplugin-element-plus/examples/vite</a>
   </p>
 </template>

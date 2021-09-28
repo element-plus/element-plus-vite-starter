@@ -6,6 +6,10 @@
 
 Preview: <https://vite-starter.element-plus.org>
 
+This is an example of all element-plus.
+
+If you want an on-demand import example, you can check [unplugin-element-plus/examples/vite](https://github.com/element-plus/unplugin-element-plus/tree/main/examples/vite).
+
 ## Project setup
 
 ```bash
@@ -22,4 +26,12 @@ npm run dev
 
 ```bash
 npm run build
+```
+
+## Usage
+
+### On demand
+
+```bash
+npm install unplugin-element-plus -D
 ```
