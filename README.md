@@ -6,9 +6,9 @@
 
 Preview: <https://vite-starter.element-plus.org>
 
-This is an example of on-demand element-plus with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components). (If you want to import all, tt may be so simple that no examples are needed.)
+This is an example of on-demand element-plus with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)(auto). (If you want to import all, tt may be so simple that no examples are needed.)
 
-If you just want an on-demand import example, you can check [unplugin-element-plus/examples/vite](https://github.com/element-plus/unplugin-element-plus/tree/main/examples/vite).
+If you just want an on-demand import example manually, you can check [unplugin-element-plus/examples/vite](https://github.com/element-plus/unplugin-element-plus/tree/main/examples/vite).
 
 ## Project setup
 
