@@ -11,11 +11,13 @@
     "vue": "^3.2.19"
   },
   "devDependencies": {
+    "@types/node": "^16.10.2",
     "@vitejs/plugin-vue": "^1.9.2",
     "@vue/compiler-sfc": "^3.2.19",
     "sass": "^1.42.1",
     "typescript": "^4.4.3",
-    "vite": "^2.5.10"
+    "unplugin-vue-components": "^0.15.4",
+    "vite": "^2.6.0"
   },
   "license": "MIT"
 }

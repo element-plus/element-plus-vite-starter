@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ElButton, ElTag, ElInput } from "element-plus";
 import { ref } from "vue";
 
 defineProps<{ msg: string }>();
@@ -37,9 +36,18 @@ const input = ref("element-plus");
     <code>styles/element/var.scss</code> to test scss variables.
   </p>
 
-<p>
-  Full Example: <a href="https://github.com/element-plus/element-plus-vite-starter" target="_blank">element-plus-vite-starter</a>
-  |
-  On demand Example: <a href="https://github.com/element-plus/unplugin-element-plus" target="_blank">unplugin-element-plus/examples/vite</a>
+  <p>
+    Full Example:
+    <a
+      href="https://github.com/element-plus/element-plus-vite-starter"
+      target="_blank"
+      >element-plus-vite-starter</a
+    >
+    | On demand Example:
+    <a
+      href="https://github.com/element-plus/unplugin-element-plus"
+      target="_blank"
+      >unplugin-element-plus/examples/vite</a
+    >
   </p>
 </template>
