@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { ElMessage } from 'element-plus'
 
 defineProps<{ msg: string }>();
 
 const count = ref(0);
 const input = ref("element-plus");
+
+const curDate = ''
+
+const toast = () => {
+  ElMessage.success('Hello')
+}
 </script>
 
 <template>
@@ -17,6 +24,7 @@ const input = ref("element-plus");
   </p>
 
   <!-- example components -->
+  <el-button @click="toast">El Message</el-button>
   <el-button type="primary" @click="count++">count is: {{ count }}</el-button>
   <el-button type="success" @click="count++">count is: {{ count }}</el-button>
   <el-button type="warning" @click="count++">count is: {{ count }}</el-button>
@@ -27,7 +35,7 @@ const input = ref("element-plus");
   <el-tag>Tag 1</el-tag>
 
   <br />
-  <el-date-picker />
+  <el-date-picker v-model="curDate" type="date" placeholder="Pick a day"></el-date-picker>
 
   <p>For example, we can custom primary color to 'green'.</p>
 

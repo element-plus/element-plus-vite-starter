@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "element-plus": "^1.2.0-beta.1",
-    "vue": "^3.2.19"
+    "vue": "^3.2.20"
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
