@@ -1,13 +1,13 @@
 <template>
   <BaseHeader />
-  <img alt="Vue logo" class="element-plus-logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Element Plus + Vite" />
+  <div style="display: flex">
+    <BaseSide />
+    <div>
+      <img alt="Vue logo" class="element-plus-logo" src="./assets/logo.png" />
+      <HelloWorld msg="Hello Vue 3.0 + Element Plus + Vite" />
+    </div>
+  </div>
 </template>
-
-<script setup lang="ts">
-import BaseHeader from "./components/layouts/BaseHeader.vue";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
 
 <style>
 #app {

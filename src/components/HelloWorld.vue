@@ -7,7 +7,7 @@ defineProps<{ msg: string }>();
 const count = ref(0);
 const input = ref("element-plus");
 
-const curDate = ''
+const curDate = ref('')
 
 const toast = () => {
   ElMessage.success('Hello')
@@ -61,3 +61,9 @@ const toast = () => {
     >unplugin-element-plus/examples/vite</a>
   </p>
 </template>
+
+<style>
+.el-button {
+  margin: 4px;
+}
+</style>
