@@ -10,7 +10,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "element-plus": "^2.1.11",
+    "element-plus": "^2.2.0",
     "vue": "^3.2.33"
   },
   "devDependencies": {
@@ -19,8 +19,8 @@
     "@vitejs/plugin-vue": "^2.3.2",
     "sass": "^1.51.0",
     "typescript": "^4.6.4",
-    "unocss": "^0.32.12",
-    "unplugin-vue-components": "^0.19.3",
+    "unocss": "^0.33.2",
+    "unplugin-vue-components": "^0.19.5",
     "vite": "^2.9.8",
     "vite-ssg": "^0.20.0",
     "vue-tsc": "^0.34.11"

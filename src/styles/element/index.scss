@@ -19,6 +19,11 @@ $--colors: (
   ),
 );
 
+// we can add this to custom namespace, default is 'el'
+@forward "element-plus/theme-chalk/src/mixins/config.scss" with (
+  $namespace: "ep"
+);
+
 // You should use them in scss, because we calculate it by sass.
 // comment next lines to use default color
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
