@@ -16,8 +16,16 @@ jobs:
         with:
           node-version: "16"
 
-      - name: Install Dependencies
-        run: npm install
+      # Cache
+      - name: Cache node modules
+        uses: actions/cache@v2.1.3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+
+      # dependencies
+      - name: Install dependencies
+        run: yarn install
 
       - name: Type Check
-        run: npm run typecheck
+        run: yarn typecheck
