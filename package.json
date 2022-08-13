@@ -10,7 +10,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "element-plus": "^2.2.2",
+    "element-plus": "^2.2.13",
     "vue": "^3.2.36"
   },
   "devDependencies": {
