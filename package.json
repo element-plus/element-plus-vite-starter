@@ -7,14 +7,24 @@
     "build": "vite build",
     "generate": "vite-ssg build",
     "preview": "vite preview",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "format": "prettier --write src/",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "element-plus": "^2.2.13",
-    "vue": "^3.2.36"
+    "vue": "^3.2.36",
+    "vue-router": "^4.1.6",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@iconify-json/ep": "^1.1.4",
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "eslint": "^8.37.0",
+    "eslint-plugin-vue": "^9.10.0",
+    "prettier": "^2.8.7",
     "@types/node": "^18.14.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "sass": "^1.52.1",
