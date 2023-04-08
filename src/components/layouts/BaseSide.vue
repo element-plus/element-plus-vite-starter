@@ -15,14 +15,6 @@
       <el-icon><DataLine /></el-icon>
       <template #title>Quick Analysis</template>
     </el-menu-item>
-    <el-menu-item index="/quick-analysis-demo">
-      <el-icon><ScaleToOriginal /></el-icon>
-      <template #title>Quick Analysis (Demo)</template>
-    </el-menu-item>
-    <el-menu-item index="/quick-analysis-old">
-      <el-icon><DocumentDelete /></el-icon>
-      <template #title>Quick Analysis (old)</template>
-    </el-menu-item>
     <el-menu-item index="/experiment-calculator" :disabled="false">
       <el-icon><WindPower /></el-icon>
       <template #title>Experiment Calculator</template>

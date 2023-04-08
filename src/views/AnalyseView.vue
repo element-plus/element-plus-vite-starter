@@ -46,7 +46,6 @@
           type="info"
         />
         <el-button type="primary" @click="triggerSubmitForAnalysis">Run Comparison</el-button>
-        <AnalysisResult ref="analysisResultComponent" :variant-inputs="variantInputsFromBlahs" />
       </el-main>
     </el-container>
   </div>
@@ -64,21 +63,10 @@ import { ref, computed } from 'vue'
 import GenerateVariantDialog from '~/components/dialogs/GenerateVariantDialog.vue'
 import type { FormValues } from '~/components/dialogs/GenerateVariantDialog.vue'
 
-import AnalysisResult from '~/components/AnalysisResults.vue'
-
 const dialogFormVisible = ref(false)
 const showResultsSection = computed(() => blahs.value.length > 1)
 
 const blahs = ref<FormValues[]>([])
-
-
-const variantInputsFromBlahs = computed<VariantInput[]>(() => {
-  return blahs.value.map((blah) => ({
-    name: blah.name,
-    isControl: blah.isControl,
-    data: blah.binomialData
-  }))
-})
 
 async function triggerSubmitForAnalysis() {
   console.log("submitted for analysis!")

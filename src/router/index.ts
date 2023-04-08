@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AnalyseViewOld from '~/views/AnalyseViewOld.vue'
 import AnalyseView from '~/views/AnalyseView.vue'
 import WelcomeView from '~/views/WelcomeView.vue'
 import PlaceholderView from '~/views/PlaceholderView.vue'
@@ -13,11 +12,6 @@ const router = createRouter({
       component: WelcomeView
     },
     {
-      path: '/quick-analysis-old',
-      name: '/quick-analysis-old',
-      component: AnalyseViewOld
-    },
-    {
       path: '/experiment-reports',
       name: 'experiment-reports',
       component: PlaceholderView
@@ -25,11 +19,6 @@ const router = createRouter({
     {
       path: '/quick-analysis',
       name: 'quick-analysis',
-      component: PlaceholderView
-    },
-    {
-      path: '/quick-analysis-demo',
-      name: 'quick-analysis-demo',
       component: AnalyseView
     },
     {
