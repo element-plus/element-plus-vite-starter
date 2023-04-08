@@ -69,7 +69,7 @@ const showResultsSection = computed(() => blahs.value.length > 1)
 const blahs = ref<FormValues[]>([])
 
 async function triggerSubmitForAnalysis() {
-  console.log("submitted for analysis!")
+  console.log('submitted for analysis!')
 }
 
 function showGenerateVariantDialog() {
@@ -94,7 +94,6 @@ function getNameString(formValues: FormValues): string {
 const deleteInputRow = (index: number) => {
   blahs.value.splice(index, 1)
 }
-
 </script>
 
 <style>

@@ -1,12 +1,5 @@
 <template>
-  <el-menu
-    router
-    mode="vertical"
-    default-active="/quick-analysis-demo"
-    :collapse="isCollapse"
-    @open="handleOpen"
-    @close="handleClose"
-  >
+  <el-menu router mode="vertical" :collapse="isCollapse" @open="handleOpen" @close="handleClose">
     <el-menu-item index="/experiment-reports" :disabled="false">
       <el-icon><memo /></el-icon>
       <template #title>Experiment Reports</template>
@@ -34,15 +27,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import {
-  ScaleToOriginal,
-  Setting,
-  DataLine,
-  Memo,
-  WindPower,
-  Orange,
-DocumentDelete
-} from '@element-plus/icons-vue'
+import { Setting, DataLine, Memo, WindPower, Orange } from '@element-plus/icons-vue'
 
 const isCollapse = ref(false)
 const handleOpen = (key: string, keyPath: string[]) => {
