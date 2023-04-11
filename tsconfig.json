@@ -16,5 +16,9 @@
     },
     "skipLibCheck": true
   },
+  "vueCompilerOptions": {
+    "target": 3,
+    "jsxTemplates": true
+  },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
