@@ -10,10 +10,10 @@ import App from "./App.vue";
 // or use cdn, uncomment cdn link in `index.html`
 
 import "~/styles/index.scss";
-import 'uno.css'
+import "uno.css";
 
 // If you want to use ElMessage, import it.
-import "element-plus/theme-chalk/src/message.scss"
+import "element-plus/theme-chalk/src/message.scss";
 
 const app = createApp(App);
 // app.use(ElementPlus);
