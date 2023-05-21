@@ -3,9 +3,9 @@
     <BaseHeader />
     <div class="flex main-container">
       <BaseSide />
-      <div>
-        <img alt="Vue logo" class="element-plus-logo" src="./assets/logo.png" />
-        <HelloWorld msg="Hello Vue 3.0 + Element Plus + Vite" />
+      <div w="full" py="4">
+        <Logos my="4" />
+        <HelloWorld msg="Hello Vue 3 + Element Plus + Vite" />
       </div>
     </div>
   </el-config-provider>
@@ -15,10 +15,6 @@
 #app {
   text-align: center;
   color: var(--ep-text-color-primary);
-}
-
-.element-plus-logo {
-  width: 50%;
 }
 
 .main-container {
