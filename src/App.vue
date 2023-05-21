@@ -1,7 +1,7 @@
 <template>
   <el-config-provider namespace="ep">
     <BaseHeader />
-    <div style="display: flex">
+    <div class="flex main-container">
       <BaseSide />
       <div>
         <img alt="Vue logo" class="element-plus-logo" src="./assets/logo.png" />
@@ -19,5 +19,9 @@
 
 .element-plus-logo {
   width: 50%;
+}
+
+.main-container {
+  height: calc(100vh - var(--ep-menu-item-height) - 3px);
 }
 </style>
