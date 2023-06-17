@@ -17,7 +17,7 @@
     "skipLibCheck": true
   },
   "vueCompilerOptions": {
-    "target": 3,
+    "target": 3
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
