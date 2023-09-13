@@ -12,6 +12,8 @@ const curDate = ref("");
 const toast = () => {
   ElMessage.success("Hello");
 };
+
+const value1 = ref(true);
 </script>
 
 <template>
@@ -42,6 +44,15 @@ const toast = () => {
     <el-tag type="warning" class="m-1">Tag 1</el-tag>
     <el-tag type="danger" class="m-1">Tag 1</el-tag>
     <el-tag type="info" class="m-1">Tag 1</el-tag>
+  </div>
+
+  <div>
+    <el-switch v-model="value1" />
+    <el-switch
+      v-model="value1"
+      class="m-2"
+      style="--ep-switch-on-color: black; --ep-switch-off-color: gray;"
+    />
   </div>
 
   <div class="my-2">
