@@ -3,6 +3,7 @@ import { toggleDark } from "~/composables";
 </script>
 
 <template>
+  <div class="head_text"><span>全息目标画像系统</span></div>
   <el-menu class="el-menu-demo" mode="horizontal">
     <el-menu-item index="1">重点组织</el-menu-item>
     <el-menu-item index="2">重点组织</el-menu-item>
