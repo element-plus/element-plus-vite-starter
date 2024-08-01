@@ -1,4 +1,12 @@
-# element-plus-vite-starter
+
+# 需要额外引入Vue router
+```bash
+npm install vue-router@4
+```
+运行项目方式见下
+
+
+# （模板项目原描述）element-plus-vite-starter
 
 > A starter kit for Element Plus with Vite
 
