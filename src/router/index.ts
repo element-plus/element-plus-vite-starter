@@ -1,12 +1,20 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 
-import Logos from '../components/Logos.vue'
 
 const routes = [
   {
-    path: '/Logos',
-    component: Logos,
+    path: '/',
+    component:()=>import("../views/Login.vue")
   },
+  {
+    path: '/login',
+    component: ()=>import("../views/Login.vue")
+  },
+  {
+    path: '/register',
+    component: ()=>import("../views/Register.vue")
+  }
+  
 ];
 
 const router = createRouter({

@@ -15,7 +15,7 @@ import "element-plus/theme-chalk/src/message.scss";
 import "~/styles/index.scss";
 import "uno.css";
 
-import router from './router/index.ts'
+import router from './router/index'
 
 
 const app = createApp(App);

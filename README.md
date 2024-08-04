@@ -1,7 +1,9 @@
 
-# 需要额外引入Vue router
+# 需要额外引入的包
 ```bash
 npm install vue-router@4
+npm install @element-plus/icons-vue
+npm install axios
 ```
 运行项目方式见下
 
