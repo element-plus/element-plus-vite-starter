@@ -19,10 +19,8 @@
             <el-input class="info" v-model="dataForm.password" type="password" Y placeholder="密码"></el-input>
           </el-form-item>
           <el-form-item>
-            <div class="">
-              <el-button type="primary" value="login" @click="dataFormSubmit()">登录</el-button>
-              <el-button type="info" value="register" @click="registerClick()">前往注册</el-button>
-            </div>
+            <el-button type="primary" value="login" @click="dataFormSubmit()">登录</el-button>
+            <el-button type="info" value="register" @click="registerClick()">前往注册</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -49,7 +47,8 @@ export default {
         ],
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' }
-        ]
+        ],
+        
       },
       loginUrl: '',
     }
@@ -82,7 +81,8 @@ export default {
     userTabClickHandler(pane, event) {
       console.log(pane.index);
       this.dataForm.userType = pane.index == 0 ? 'buyer' : 'seller';
-    }
+    },
+    
   }
 }
 </script>

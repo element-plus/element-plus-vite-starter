@@ -10,7 +10,10 @@ export default {
   },
   methods: {
     gotoLoginPage() {
-      this.$router.push({path: '/login'});
+      this.$router.replace({path: '/login'});
+    },
+    gotoHomePage() {
+      this.$router.replace({path: '/'});
     },
     toggleDark
   }
@@ -18,9 +21,9 @@ export default {
 </script>
 
 <template>
-  <div class="m-2">
-    <el-menu class="base-header" mode="horizontal">
-      <el-menu-item index="0">
+  <div class="m-2 base-header">
+    <el-menu mode="horizontal">
+      <el-menu-item index="0" @click="gotoHomePage">
         <img src="../../assets/Taoduoduo.png" style="width: 100px;" />
       </el-menu-item>
       <div class="flex-grow" />
@@ -31,7 +34,7 @@ export default {
         <el-menu-item index="2-2">基本信息</el-menu-item>
       </el-sub-menu>
       <el-menu-item index="3">购物车</el-menu-item>
-      <el-menu-item index="4" v-if="!isLogined" @click="gotoLoginPage()">注册/登录</el-menu-item>
+      <el-menu-item index="4" v-if="!isLogined" @click="gotoLoginPage">注册/登录</el-menu-item>
       <el-menu-item index="4" v-if="isLogined">退出登录</el-menu-item>
       <el-menu-item h="full" @click="toggleDark()">
         <button class="border-none w-full bg-transparent cursor-pointer" style="height: var(--ep-menu-item-height)">
@@ -43,9 +46,6 @@ export default {
 
 </template>
 
-<style lang="scss">
-.base-header {
-  // why useless ?
-  --bg-color: var(--ep-color-danger-light-9);
-}
+<style lang="scss" scoped>
+
 </style>
