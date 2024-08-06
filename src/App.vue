@@ -3,8 +3,15 @@
 </script>
 <template>
   <el-config-provider namespace="ep">
-    <BaseHeader />
-    <RouterView/>
+    <el-container>
+      <el-header>
+        <BaseHeader />      
+      </el-header>
+      <el-main>
+        <RouterView/>
+      </el-main>
+    </el-container>
+
   </el-config-provider>
 </template>
 

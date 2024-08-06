@@ -14,9 +14,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  background-color: var(--ep-color-info-light-8);
+  background: var(--ep-color-info-light-8);
+  background-attachment: fixed;	
+  background-size: cover;
   overflow: auto;
 }
+
 
 a {
   color: var(--ep-color-primary);
@@ -32,3 +35,7 @@ code {
 // .goods-box {
 //   background-color: var(--ep-color-primary-light-9);
 // }
+
+.ep-select__selected-item span{
+  color: #344055 !important;
+}

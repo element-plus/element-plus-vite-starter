@@ -1,5 +1,6 @@
 <script>
 // import { RouterLink } from "vue-router";
+import { RouterLink } from "vue-router";
 import { toggleDark } from "~/composables";
 
 export default {
@@ -10,10 +11,10 @@ export default {
   },
   methods: {
     gotoLoginPage() {
-      this.$router.replace({path: '/login'});
+      this.$router.push({ path: '/login' });
     },
     gotoHomePage() {
-      this.$router.replace({path: '/'});
+      this.$router.push({ path: '/' });
     },
     toggleDark
   }
@@ -21,7 +22,7 @@ export default {
 </script>
 
 <template>
-  <div class="m-2 base-header">
+  <div class="mt-2">
     <el-menu mode="horizontal">
       <el-menu-item index="0" @click="gotoHomePage">
         <img src="../../assets/Taoduoduo.png" style="width: 100px;" />
@@ -46,6 +47,4 @@ export default {
 
 </template>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
