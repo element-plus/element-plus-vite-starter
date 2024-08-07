@@ -1,28 +1,32 @@
 <template>
-	<div class="carousel m-5">
-		<el-carousel :interval="4000" type="card">
-			<el-carousel-item v-for="index in (goods.length < 3 ? goods.length : 3)" :key="index">
-				<el-image :src="goods[index - 1].productImageBig" fit="fill" />
-			</el-carousel-item>
-		</el-carousel>
-	</div>
-	<div class="img-item">
-		<!--商品-->
-		<div class="goods-box w">
-			<GoodsCard v-for="(item, i) in goods" :key="i" :msg="item"></GoodsCard>
-		</div>
-		<!-- <el-pagination
-          v-if="!noResult&&!error"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage"
-          :page-sizes="[8, 20, 40, 80]"
-          :page-size="pageSize"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="total">
-        </el-pagination> -->
-	</div>
-
+	<el-tabs class="w">
+		<el-tab-pane label="商品">
+			<div>
+				<div class="img-item">
+					<!--商品-->
+					<div class="goods-box w">
+						<GoodsCard v-for="(item, i) in goods" :key="i" :msg="item"></GoodsCard>
+					</div>
+					<!-- <el-pagination
+				v-if="!noResult&&!error"
+				@size-change="handleSizeChange"
+				@current-change="handleCurrentChange"
+				:current-page="currentPage"
+				:page-sizes="[8, 20, 40, 80]"
+				:page-size="pageSize"
+				layout="total, sizes, prev, pager, next, jumper"
+				:total="total">
+			</el-pagination> -->
+				</div>
+			</div>
+		</el-tab-pane>
+		<el-tab-pane label="商店">
+			<div>
+				<h1>145</h1>
+				<h3>233</h3>
+			</div>
+		</el-tab-pane>
+	</el-tabs>
 </template>
 
 <script>
@@ -36,11 +40,11 @@ export default {
 			Postcard,
 			Postcard2,
 			goods: [],
-			getGoodsUrl: '',
+			getResultUrl: '',
 		}
 	},
 	methods: {
-		getAllGoods() {
+		getResult() {
 			// axios.get(this.getGoodsUrl, {
 			// 	headers: { 'Content-Type': 'application/json'}
 			// }).then(res => {
@@ -77,12 +81,11 @@ export default {
 					productImageBig: this.Postcard,
 					salePrice: 810.114,
 				},
-			];
-			
+			]
 		}
 	},
 	mounted() {
-		this.getAllGoods();
+		this.getResult();
 	}
 
 }

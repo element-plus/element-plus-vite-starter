@@ -1,7 +1,7 @@
 <template>
 	<div id="container">
 		<el-row>
-			<el-col :span="12" justify="center">
+			<el-col :span="12">
 				<el-row justify="center">
 					<h1>{{ goods.name }}</h1>
 				</el-row>
@@ -12,31 +12,34 @@
 				</el-row>
 				<el-row justify="center">
 					<el-col :span="6">
-						<button class="btn">
+						<button class="btn" style="background-color:cornflowerblue;">
 							<span class="buy" v-if="!shopSubscribed" @click="subscribeShop">订阅店铺</span>
 							<span class="buy" v-else @click="cancelSubscribingShop">取消订阅店铺</span>
-						</button> 
+						</button>
 					</el-col>
 					<el-col :span="6">
-						<button class="btn">
+						<button class="btn" style="background-color:cornflowerblue;">
 							<span class="buy" v-if="!productCollected" @click="collectProduct">收藏商品</span>
 							<span class="buy" v-else @click="cancelCollectingProduct">取消收藏商品</span>
 						</button>
 					</el-col>
-
 				</el-row>
-				<el-row>
+				<el-row justify="center" class="mt-7">
 					<h2>库存量：{{ goods.storage }}</h2>
 				</el-row>
 				<el-row>
-					<!-- <el-col :span="6"> -->
-					<h2>版本选择</h2>
-					<!-- </el-col> -->
+					<el-col>
+						<h2>-- 版本选择 --</h2>
+					</el-col>
+					<el-col>
+						<el-select v-model="buyInfo.buyVersion" style=" width: 50%;">
+							<el-option v-for="(version, i) in goods.version" :key="i" :label="version" :value="version">
+							</el-option>
+						</el-select>
+					</el-col>
+
 				</el-row>
-				<el-select v-model="buyInfo.buyVersion" style="margin-right: 50%; width: 40%;">
-					<el-option v-for="(version, i) in goods.version" :key="i" :label="version" :value="version">
-					</el-option>
-				</el-select>
+
 				<el-row class="mt-30 mr-7 mb-30" @click="buyNow">
 					<!-- <div class=""> -->
 					<el-col :span="12">
@@ -72,13 +75,29 @@
 		</el-row>
 	</div>
 
-	<div id="container">
+	<div id="container" class="product-comment">
 		<el-row justify="center">
 			<h2>商品评价</h2>
+			<el-divider></el-divider>
 		</el-row>
-		<el-row>
-			<!-- <p>{{ goods.details }}</p> -->
-		</el-row>
+		<!-- <el-row> -->
+		<template v-for="(comment, i) in goods.comments" :key="i">
+			<el-row>
+				<el-col :span="8" style="text-align: left;" class="ml-10">
+					<h2> {{ comment.userName }}</h2>
+				</el-col>
+				<el-col :span="5" style="text-align: left;" class="mt-5">
+					<el-rate v-model="comment.rate" allow-half disabled />
+				</el-col>
+			</el-row>
+			<el-row>
+				<el-col style="text-align: left;">
+					<p>{{ comment.content }}</p>
+				</el-col>
+			</el-row>
+			<el-divider></el-divider>
+		</template>
+		<!-- </el-row> -->
 	</div>
 </template>
 
@@ -92,7 +111,7 @@ export default {
 				name: '测试商品名称',
 				storage: 20,
 				version: ['S', 'M', 'L', 'XL', 'XXL', 'custom'],
-				price: 114.14,
+				price: 100.01,
 				imageSrc: ['https://sc01.alicdn.com/kf/HTB1Cic9HFXXXXbZXpXXq6xXFXXX3/200006212/HTB1Cic9HFXXXXbZXpXXq6xXFXXX3.jpg', '', ''],
 				details: 'This is a test product.',
 				shopName: 'Bemani Sound Team',
@@ -100,10 +119,12 @@ export default {
 				comments: [
 					{
 						userName: 'Ibuki Ayapa',
+						rate: 5.0,
 						content: 'I love it.'
 					},
 					{
 						userName: 'Minato Aqua',
+						rate: 3.5,
 						content: 'Otsuaqua!'
 					},
 				]
@@ -111,7 +132,7 @@ export default {
 			},
 			buyInfo: {
 				buyVersion: '',
-				buyQuantity: 0,
+				buyQuantity: 1,
 			},
 			shopSubscribed: false,
 			productCollected: false,
@@ -136,14 +157,14 @@ export default {
 		subscribeShop() {
 
 		},
-		canceclsubscribingShop() {
+		cancelSubscribingShop() {
 
 		},
 		collectProduct() {
 
 		},
 		cancelCollectingProduct() {
-			
+
 		},
 	},
 };
@@ -200,7 +221,7 @@ export default {
 	position: relative;
 	font-size: 24px;
 	color: #344055;
-	margin-left: 5%;
+	/* margin-left: 5%; */
 }
 
 /* 	Product Name */
@@ -302,8 +323,7 @@ export default {
 }
 
 /* shopping cart icon */
-.btn .price,
-.shopping-cart {
+.btn .price {
 	background: #333;
 	border: 0;
 	margin: 0;
@@ -312,16 +332,6 @@ export default {
 .btn .price {
 	transform: translateX(-10%);
 	padding-right: 15px;
-}
-
-/* the Icon */
-.btn .shopping-cart {
-	transform: translateX(-100%);
-	position: absolute;
-	background: #333;
-	z-index: 1;
-	left: 0;
-	top: 0;
 }
 
 /* buy */
@@ -402,4 +412,8 @@ export default {
 .product-version {
 	margin-left: 5%;
 }
+
+/* .product-comment h2 {
+
+} */
 </style>

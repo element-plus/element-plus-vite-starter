@@ -25,7 +25,7 @@
 export default {
   props: {
     msg: {
-      salePrice: 0
+      // salePrice: 0
     }
   },
   methods: {

@@ -1,11 +1,17 @@
+# 根项目结构(/src)
 
-# 需要额外引入的包
-```bash
-npm install vue-router@4
-npm install @element-plus/icons-vue
-npm install axios
-```
-运行项目方式见下
+
+src
+|__ assets：静态资源（图片等）
+|__ components: 组件
+|__ composables: element plus的暗黑模式的导入（项目模板自带）
+|__ router: vue-router的路由配置
+|__ styles: css / scss集合
+|__ views：页面
+   |__ Buyer: 买家页面
+   |__ Goods: 商品 / 商店详情页（通用）
+   |__ Seller: 卖家页面
+
 
 
 # （模板项目原描述）element-plus-vite-starter
