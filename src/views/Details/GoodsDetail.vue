@@ -6,9 +6,9 @@
 					<h1>{{ goods.name }}</h1>
 				</el-row>
 				<el-row justify="center">
-					<!-- <RouterLink to="shop">
-					</RouterLink> -->
-					<h3>From Shop: {{ goods.shopName }}</h3>
+					<RouterLink to="shopDetail">
+						<h3>From Shop: {{ goods.shopName }}</h3>
+					</RouterLink>
 				</el-row>
 				<el-row justify="center">
 					<el-col :span="6">
@@ -25,7 +25,7 @@
 					</el-col>
 				</el-row>
 				<el-row justify="center" class="mt-7">
-					<h2>库存量：{{ goods.storage }}</h2>
+					<h2>库存量 {{ goods.storage }}</h2>
 				</el-row>
 				<el-row>
 					<el-col>

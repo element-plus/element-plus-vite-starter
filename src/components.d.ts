@@ -43,5 +43,6 @@ declare module 'vue' {
     Logos: typeof import('./components/Logos.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShopCard: typeof import('./components/ShopCard.vue')['default']
   }
 }

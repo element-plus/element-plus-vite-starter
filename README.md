@@ -9,7 +9,7 @@ src
 |__ styles: css / scss集合
 |__ views：页面
    |__ Buyer: 买家页面
-   |__ Goods: 商品 / 商店详情页（通用）
+   |__ Details: 商品 / 商店详情页（通用）
    |__ Seller: 卖家页面
 
 

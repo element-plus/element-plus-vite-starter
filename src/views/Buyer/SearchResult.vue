@@ -1,29 +1,27 @@
 <template>
 	<el-tabs class="w">
 		<el-tab-pane label="商品">
-			<div>
-				<div class="img-item">
-					<!--商品-->
-					<div class="goods-box w">
-						<GoodsCard v-for="(item, i) in goods" :key="i" :msg="item"></GoodsCard>
-					</div>
-					<!-- <el-pagination
-				v-if="!noResult&&!error"
-				@size-change="handleSizeChange"
-				@current-change="handleCurrentChange"
-				:current-page="currentPage"
-				:page-sizes="[8, 20, 40, 80]"
-				:page-size="pageSize"
-				layout="total, sizes, prev, pager, next, jumper"
-				:total="total">
-			</el-pagination> -->
+			<div class="img-item">
+				<div class="goods-box w">
+					<GoodsCard v-for="(item, i) in goods" :key="i" :msg="item"></GoodsCard>
 				</div>
+				<!-- <el-pagination
+						v-if="!noResult&&!error"
+						@size-change="handleSizeChange"
+						@current-change="handleCurrentChange"
+						:current-page="currentPage"
+						:page-sizes="[8, 20, 40, 80]"
+						:page-size="pageSize"
+						layout="total, sizes, prev, pager, next, jumper"
+						:total="total">
+					</el-pagination> -->
 			</div>
 		</el-tab-pane>
 		<el-tab-pane label="商店">
-			<div>
-				<h1>145</h1>
-				<h3>233</h3>
+			<div class="img-item">
+				<div class="goods-box w">
+					<ShopCard v-for="(item, i) in shops" :key="i" :msg="item"></ShopCard>
+				</div>
 			</div>
 		</el-tab-pane>
 	</el-tabs>
@@ -40,6 +38,7 @@ export default {
 			Postcard,
 			Postcard2,
 			goods: [],
+			shops: [],
 			getResultUrl: '',
 		}
 	},
@@ -81,6 +80,40 @@ export default {
 					productImageBig: this.Postcard,
 					salePrice: 810.114,
 				},
+			],
+			this.shops = [
+				{
+					shopId: 1,
+					shopName: 'Cygames',
+					// 商店图片取最多四张
+					shopGoodsImage: [Postcard],
+					shopSubscriberCount: 1000,
+					shopSaleCount: 2000,
+				},
+				{
+					shopId: 2,
+					shopName: 'Bemani Sound Team',
+					// 商店图片取最多四张
+					shopGoodsImage: [Postcard, Postcard2],
+					shopSubscriberCount: 1000,
+					shopSaleCount: 2000,
+				},
+				{
+					shopId: 3,
+					shopName: 'Animate',
+					// 商店图片取最多四张
+					shopGoodsImage: [Postcard, Postcard2, Postcard],
+					shopSubscriberCount: 1000,
+					shopSaleCount: 2000,
+				},
+				{
+					shopId: 4,
+					shopName: 'Capcom',
+					// 商店图片取最多四张
+					shopGoodsImage: [Postcard, Postcard2, Postcard, Postcard2],
+					shopSubscriberCount: 1000,
+					shopSaleCount: 2000,
+				}
 			]
 		}
 	},
@@ -96,14 +129,6 @@ export default {
 	// background-color: var(--ep-color-warning-light-3);
 	margin-left: 20%;
 	margin-right: 20%;
-}
-
-.text {
-	// color: #ffffff;
-	opacity: 0.9;
-	line-height: 200px;
-	margin: 0;
-	text-align: center;
 }
 
 .goods-box {

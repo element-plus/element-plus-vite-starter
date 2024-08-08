@@ -1,11 +1,10 @@
 <template>
+  <!-- 展示用的商品卡片 -->
   <div class="good-item">
-    <div style="">
-      <div class="good-img">
-        <a @click="openProduct(msg.productId)">
-          <img :src="msg.productImageBig" :alt="msg.productName" :key="msg.productImageBig">
-        </a>
-      </div>
+    <div class="good-img">
+      <a @click="openProduct(msg.productId)">
+        <img :src="msg.productImageBig" :alt="msg.productName" :key="msg.productImageBig">
+      </a>
       <h6 class="good-title">{{ msg.productName }}</h6>
       <!-- <h3 class="sub-title ellipsis">{{ msg.subTitle }}</h3> -->
       <div class="good-price pr">
@@ -21,6 +20,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -31,15 +31,15 @@ export default {
   methods: {
     goodsDetails(id) {
       console.log(this.$route);
-        this.$router.push({path: 'goodsDetail'});
-        // + product id
+      this.$router.push({ path: 'goodsDetail' });
+      // + product id
     },
     openProduct(id) {
-        this.goodsDetails(id);
-        // window.open('//' + window.location.host + '/goodsDetail?productId=' + id)
+      this.goodsDetails(id);
+      // window.open('//' + window.location.host + '/goodsDetail?productId=' + id)
     },
     addCart(id, price, name, img) {
-      
+
     }
   },
 }
@@ -95,7 +95,7 @@ export default {
   .good-title {
     line-height: 1.4;
     font-size: 18px;
-    margin: 0 auto;
+    margin: 10% auto;
     padding: 0 14px;
     text-align: center;
     overflow: hidden;
