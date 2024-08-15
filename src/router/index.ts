@@ -1,5 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import Homepage from '../views/Buyer/Homepage.vue';
+import Reviewpage from '~/views/Buyer/Reviewpage.vue';
+import path from 'path';
+import { compile } from 'vue';
 
 const routes = [
   {
@@ -33,6 +36,26 @@ const routes = [
     name: 'Search',
     component: () => import("../views/Buyer/SearchResult.vue")
   },
+  {
+    path: '/Comment',
+    name: 'Comment',
+    component: () => import("../views/Buyer/Commentpage.vue")
+  },
+  {
+    path: '/Seller/AddGoods',
+    name: 'AddGoods',
+    component: () => import("../views/Seller/AddGoods.vue")
+  },
+  {
+    path: '/Seller/EditGoods',
+    name: 'EditGoods',
+    component: () => import("../views/Seller/EditGoods.vue")
+  },
+  {
+    path: '/Seller/Goodslist',
+    name: 'Goodslist',
+    component: () => import("../views/Seller/GoodsList.vue")
+  }
 
 ];
 
