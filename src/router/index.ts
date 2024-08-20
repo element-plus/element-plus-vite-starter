@@ -33,7 +33,16 @@ const routes = [
     name: 'Search',
     component: () => import("../views/Buyer/SearchResult.vue")
   },
-
+  {
+    path:'/cart',
+    name:'cart',
+    component:()=> import("../views/Buyer/Cart.vue")
+  },
+  {
+    path:'/address',
+    name:'address',
+    component:()=>import("../views/Buyer/Address.vue")
+  }
 ];
 
 const router = createRouter({

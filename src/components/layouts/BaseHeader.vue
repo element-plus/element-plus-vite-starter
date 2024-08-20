@@ -9,12 +9,12 @@
       <el-menu-item index="1" @click="gotoSearch">搜索</el-menu-item>
       <el-sub-menu index="2">
         <template #title>个人信息</template>
-        <el-menu-item index="2-1">收货地址</el-menu-item>
+        <el-menu-item index="2-1" @click="gotoAddress()">收货地址</el-menu-item>
         <el-menu-item index="2-2">基本信息</el-menu-item>
         <el-menu-item index="2-3">收藏商品</el-menu-item>
         <el-menu-item index="2-4">关注店铺</el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="3">购物车</el-menu-item>
+      <el-menu-item index="3" @click="gotoCart()">购物车</el-menu-item>
       <el-menu-item index="4" v-if="!isLogined" @click="gotoLoginPage">注册/登录</el-menu-item>
       <el-menu-item index="4" v-if="isLogined">退出登录</el-menu-item>
       <el-menu-item h="full" @click="toggleDark()">
@@ -67,6 +67,9 @@ export default {
     gotoSearch() {
       this.isSearch = true;
     },
+    gotoAddress(){
+      this.$router.push({path:'/address'})
+    },
     searchByKeywords() {
       if (this.keyword !== '') {
         this.$router.push({path: '/Search'});
@@ -74,6 +77,9 @@ export default {
     },
     toggleDark,
     markRaw,
+    gotoCart(){
+      this.$router.push({path:'/cart'})
+    }
   }
 }
 </script>
