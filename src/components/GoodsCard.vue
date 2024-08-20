@@ -11,8 +11,7 @@
         <div class="ds pa good-btn">
           <el-button @click="openProduct(msg.productId)" style="margin: 0 20px" type="primary"
             size="small">查看详情</el-button>
-          <el-button style="margin: 0 20px" size="small"
-            @btnClick="addCart(msg.productId, msg.salePrice, msg.productName, msg.productImageBig)"
+          <el-button style="margin: 0 20px" size="small" @btnClick="addCart(msg.productId)"
             type="info">加入购物车</el-button>
         </div>
         <p><span style="font-size:14px">￥</span>{{ Number(msg.salePrice).toFixed(2) }}</p>
@@ -22,25 +21,75 @@
 </template>
 
 <script>
+import { addToCart, getGoodsDetail } from '../api/apis';
+import { ElMessage } from 'element-plus'
+
 export default {
   props: {
     msg: {
       // salePrice: 0
     }
   },
+  data() {
+    return {
+      ElMessage,
+      buyInfo = {
+        pid,
+        userName,
+        version,
+        quantity: 1,
+      },
+    }
+  },
   methods: {
+    getGoodsDetail,
+    addToCart,
     goodsDetails(id) {
       console.log(this.$route);
-      this.$router.push({ path: 'goodsDetail' });
+      this.$router.push(`/goodsDetail/${id}`)
       // + product id
     },
     openProduct(id) {
       this.goodsDetails(id);
       // window.open('//' + window.location.host + '/goodsDetail?productId=' + id)
     },
-    addCart(id, price, name, img) {
+    addToCartRequest(id) {
+      this.getGoodsDetailRequest(id);
+      this.buyInfo.pid = id;
+      this.buyInfo.quantity = 1;
+      this.buyInfo.userName = localStorage.getItem['loginUserName'];
+      if (this.buyInfo.version) {
+        addToCart(this.buyInfo).then(res => {
+          if (res.status === '200') {
+            ElMessage.success('加入购物车成功');
+          } else {
+            this.buyInfo.version = null;
+            if (res.statusText) {
+              ElMessage.error(res.statusText);
+            } else {
+              ElMessage.error('未知错误, Status: ' + res.status);
+            }
+          }
+        })
+      }
+    },
+    getGoodsDetailRequest(pid) {
+      console.log(pid);
 
-    }
+      getGoodsDetail({ id: pid }).then(res => {
+        if (res.status === '200') {
+          this.buyInfo.version = res.data.version[0];
+        } else {
+          this.buyInfo.version = null;
+          if (res.statusText) {
+            ElMessage.error(res.statusText);
+          } else {
+            ElMessage.error('未知错误, Status: ' + res.status);
+
+          }
+        }
+      });
+    },
   },
 }
 </script>

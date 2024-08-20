@@ -29,12 +29,14 @@
 </template>
 
 <script>
+import { ElMessage } from 'element-plus'
 import LoginPage from '../assets/LoginPage.png'
-import axios from 'axios';
+import { userLogin } from '../api/apis';
 
 export default {
   data() {
     return {
+      ElMessage,
       LoginPage,
       dataForm: {
         userName: '',
@@ -48,41 +50,45 @@ export default {
         password: [
           { required: true, message: '密码不能为空', trigger: 'blur' }
         ],
-        
+
       },
       loginUrl: '',
     }
   },
   methods: {
     // 提交表单
+    userLogin,
     dataFormSubmit() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          // axios.post(this.loginUrl, this.dataForm, {
-          //   headers: {
-          //     'Content-Type': 'application/json'
-          //   }
-          // }).then((res) => {
-          //   if (res.data.accessToken) {
-          //     localStorage.setItem('Authorization', 'bearer ' + res.data.accessToken)
-          //     // 路由到主页 replace 是页面替换 一般可以用于局部组件路由
-          //     // push 是整体 推 页面
-          //     this.$router.replace({name: 'home'})
-          //   } else {
-          //     this.$router.replace({name: 'login'})
-          //   }
-          // })
+          userLogin(this.dataForm).then(res => {
+            console.log(res);
+            if (res.status === '200') {
+              localStorage.setItem['loginUserName'] = this.dataForm.userName;
+              localStorage.setItem['loginUserType'] = this.dataForm.userType;
+              ElMessage.success('登录成功');
+              this.$router.push({ path: '/' })
+            } else {
+              if (res.statusText) {
+                ElMessage.error(res.statusText);
+              } else {
+                ElMessage.error('未知错误, Status: ' + res.status);
+
+              }
+            }
+          }
+          );
         }
-      })
+      });
     },
     registerClick() {
       this.$router.replace({ path: '/register' });
     },
     userTabClickHandler(pane, event) {
-      console.log(pane.index);
+      // console.log(pane.index);
       this.dataForm.userType = pane.index == 0 ? 'buyer' : 'seller';
     },
-    
+
   }
 }
 </script>

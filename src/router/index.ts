@@ -22,17 +22,17 @@ const routes = [
     component: () => import("../views/Register.vue")
   },
   {
-    path: '/goodsDetail', 
+    path: '/goodsDetail/:goodsId', 
     name: 'goodsDetail',
     component: () => import("../views/Details/GoodsDetail.vue")
   },
   {
-    path: '/shopDetail',
+    path: '/shopDetail/:shopId',
     name: 'shopDetail',
     component: ()=>import("../views/Details/ShopDetail.vue")
   },
   {
-    path: '/Search',
+    path: '/Search/:keyword',
     name: 'Search',
     component: () => import("../views/Buyer/SearchResult.vue")
   },

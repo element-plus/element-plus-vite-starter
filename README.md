@@ -1,16 +1,15 @@
-# 根项目结构(/src)
-
-
-src
-|__ assets：静态资源（图片等）
-|__ components: 组件
-|__ composables: element plus的暗黑模式的导入（项目模板自带）
-|__ router: vue-router的路由配置
-|__ styles: css / scss集合
-|__ views：页面
-   |__ Buyer: 买家页面
-   |__ Details: 商品 / 商店详情页（通用）
-   |__ Seller: 卖家页面
+# 根项目结构(/src)    
+src  
+|__ api: API相关配置  
+|__ assets：静态资源（图片等） 
+|__ components: 组件  
+|__ composables: element plus的暗黑模式的导入（项目模板自带）  
+|__ router: vue-router的路由配置  
+|__ styles: 通用css / scss集合  
+|__ views：页面  
+　　|__ Buyer: 买家页面  
+　　|__ Details: 商品 / 商店详情页（通用）  
+　　|__ Seller: 卖家页面    
 
 
 

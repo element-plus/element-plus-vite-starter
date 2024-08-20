@@ -6,21 +6,19 @@
 					<h1>{{ goods.name }}</h1>
 				</el-row>
 				<el-row justify="center">
-					<RouterLink to="shopDetail">
-						<h3>From Shop: {{ goods.shopName }}</h3>
-					</RouterLink>
+					<h3 @click="clickToShop">From Shop: {{ goods.shopName }}</h3>
 				</el-row>
 				<el-row justify="center">
 					<el-col :span="6">
 						<button class="btn" style="background-color:cornflowerblue;">
-							<span class="buy" v-if="!shopSubscribed" @click="subscribeShop">订阅店铺</span>
-							<span class="buy" v-else @click="cancelSubscribingShop">取消订阅店铺</span>
+							<span class="buy" v-if="!shopSubscribed" @click="subscribeShopRequest">订阅店铺</span>
+							<span class="buy" v-else @click="cancelSubscribingShopRequest">取消订阅店铺</span>
 						</button>
 					</el-col>
 					<el-col :span="6">
 						<button class="btn" style="background-color:cornflowerblue;">
-							<span class="buy" v-if="!productCollected" @click="collectProduct">收藏商品</span>
-							<span class="buy" v-else @click="cancelCollectingProduct">取消收藏商品</span>
+							<span class="buy" v-if="!productCollected" @click="collectProductRequest">收藏商品</span>
+							<span class="buy" v-else @click="cancelCollectingProductRequest">取消收藏商品</span>
 						</button>
 					</el-col>
 				</el-row>
@@ -32,7 +30,7 @@
 						<h2>-- 版本选择 --</h2>
 					</el-col>
 					<el-col>
-						<el-select v-model="buyInfo.buyVersion" style=" width: 50%;">
+						<el-select v-model="buyInfo.version" style=" width: 50%;">
 							<el-option v-for="(version, i) in goods.version" :key="i" :label="version" :value="version">
 							</el-option>
 						</el-select>
@@ -40,7 +38,7 @@
 
 				</el-row>
 
-				<el-row class="mt-30 mr-7 mb-30" @click="buyNow">
+				<el-row class="mt-30 mr-7 mb-30" @click="buyImmediatelyRequest">
 					<!-- <div class=""> -->
 					<el-col :span="12">
 						<button class="btn">
@@ -49,7 +47,7 @@
 						</button>
 					</el-col>
 					<el-col :span="12">
-						<button class="btn" @click="addToCart">
+						<button class="btn" @click="addToCartRequest">
 							<span class="price">{{ goods.price }} RMB</span>
 							<span class="buy">加入购物车</span>
 						</button>
@@ -102,11 +100,13 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
+import { getGoodsDetail, addToCart, subscribeShop, cancelSubscribingShop, collectProduct, cancelCollectingProduct, checkProductCollected, checkShopSubscribed } from '../../api/apis';
+import { ElMessage } from 'element-plus'
 
 export default {
 	data() {
 		return {
+			ElMessage,
 			goods: {
 				name: '测试商品名称',
 				storage: 20,
@@ -131,8 +131,10 @@ export default {
 
 			},
 			buyInfo: {
-				buyVersion: '',
-				buyQuantity: 1,
+				pid,
+				userName,
+				version,
+				quantity: 1,
 			},
 			shopSubscribed: false,
 			productCollected: false,
@@ -140,32 +142,143 @@ export default {
 	},
 
 	mounted() {
-		this.getGoodsDetail();
-		this.buyInfo.buyVersion = this.goods.version[0];
+		this.getGoodsDetailRequest();
+		this.checkProductCollected();
+		this.checkShopSubscribed();
+		this.buyInfo.version = this.goods.version[0];
 	},
 
 	methods: {
-		getGoodsDetail() {
+		getGoodsDetail,
+		addToCart,
+		subscribeShop,
+		cancelSubscribingShop,
+		collectProduct,
+		cancelCollectingProduct,
+		checkProductCollected,
+		checkShopSubscribed,
+		getGoodsDetailRequest() {
+			console.log(this.$route.params.goodsId);
+			// this.goods.productId = this.$route.params.goodsId;
+			getGoodsDetail({ id: this.$route.params.goodsId }).then(res => {
+				if (res.status === '200') {
+					this.goods = res.data;
+					this.goods.productId = this.$route.params.goodsId;
+					this.buyInfo.pid = this.$route.params.goodsId;
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
 
+					}
+				}
+			});
 		},
-		addToCart() {
+		clickToShop() {
+			this.$router.push({ path: `/shopDetail/${this.goods.shopId}` })
+		},
+		addToCartRequest() {
+			addToCart(this.buyInfo).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('添加至购物车成功')
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
 
+					}
+				}
+			});
 		},
-		buyNow() {
 
+		buyImmediatelyRequest() {
+			// ?
 		},
-		subscribeShop() {
+		subscribeShopRequest() {
+			subscribeShop({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('关注店铺成功');
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
 
+					}
+				}
+			});
+			this.checkShopSubscribedRequest();
 		},
-		cancelSubscribingShop() {
-
+		cancelSubscribingShopRequest() {
+			cancelSubscribingShop({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('取消关注店铺成功');
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+			this.checkShopSubscribedRequest();
 		},
-		collectProduct() {
-
+		collectProductRequest() {
+			collectProduct({ userName: localStorage.getItem['loginUserName'], pid: this.$route.params.goodsId }).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('收藏商品成功');
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+			this.checkProductCollectedRequest();
 		},
-		cancelCollectingProduct() {
-
+		cancelCollectingProductRequest() {
+			cancelCollectingProduct({ userName: localStorage.getItem['loginUserName'], pid: this.$route.params.goodsId }).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('取消收藏商品成功');
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+			this.checkProductCollectedRequest();
 		},
+		checkProductCollectedRequest() {
+			checkProductCollected({ userName: localStorage.getItem['loginUserName'], pid: this.$route.params.goodsId }).then(res => {
+				if (res.status === '200') {
+					this.productCollected = res.data;
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+		},
+		checkShopSubscribedRequest() {
+			checkShopSubscribed({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
+				if (res.status === '200') {
+					this.shopSubscribed = res.data;
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+		}
 	},
 };
 </script>

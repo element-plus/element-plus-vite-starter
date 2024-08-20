@@ -34,13 +34,10 @@
       <el-input v-model="keyword" :prefix-icon="Search" size="large" class="mr-20" style="width: 25%;"/>
       <el-button type="primary" :icon="Search" @click="searchByKeywords">Search</el-button>
     </div>
-   
   </el-drawer>
 </template>
 
 <script>
-// import { RouterLink } from "vue-router";
-import { RouterLink } from "vue-router";
 import { toggleDark } from "~/composables";
 import { Search } from "@element-plus/icons-vue"
 import { markRaw } from 'vue';
@@ -54,7 +51,7 @@ export default {
   },
   computed: {
     isLogined() {
-      return localStorage.getItem["Authorization"] ? true : false;
+      return localStorage.getItem["loginUserName"] ? true : false;
     }
   },
   methods: {
@@ -69,7 +66,7 @@ export default {
     },
     searchByKeywords() {
       if (this.keyword !== '') {
-        this.$router.push({path: '/Search'});
+        this.$router.push({path: `/Search/${this.keyword}`});
       }
     },
     toggleDark,

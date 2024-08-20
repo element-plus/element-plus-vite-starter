@@ -2,8 +2,8 @@
   <div class="shop-detail">
     <div class="shop-info-box">
       <h1>{{ shop.shopName }}</h1>
-      <el-button v-if="!isSubscribed" type="info" @click="subscribeShop"> 关注店铺 </el-button>
-      <el-button v-else type="primary" @click="cancelSubscribingShop"> 关注店铺 </el-button>
+      <el-button v-if="!isSubscribed" type="info" @click="subscribeShopRequest"> 关注店铺 </el-button>
+      <el-button v-else type="primary" @click="cancelSubscribingShopRequest"> 取消关注店铺 </el-button>
       <h3>粉丝数 {{ shop.shopSubsciberCount }}</h3>
       <h3>总销量 {{ shop.shopSaleCount }}</h3>
     </div>
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { getShopDetail, getShopProducts, subscribeShop, cancelSubscribingShop, checkShopSubscribed } from '../../api/apis';
+import { ElMessage } from 'element-plus'
 import Postcard from '../../assets/postcard.jpg'
 import Postcard2 from '../../assets/postcard2.jpg'
 
@@ -57,20 +59,45 @@ export default {
   },
 
   mounted() {
+    // 顺序不能换
     this.getShopInfo();
-    this.getShopGoodsList();
+		this.checkShopSubscribedRequest();
+    this.getShopProductsRequest();
   },
 
   methods: {
+    getShopDetail,
+    getShopProducts,
+    subscribeShop,
+    cancelSubscribingShop,
+    checkShopSubscribed,
     getShopInfo() {
+      this.shop.shopId = this.$route.params.shopId;
+      console.log(this.shop.params.shopId);
       this.shop = {
-        shopId: 1,
         shopName: 'Bemani Sound Team',
         shopSubsciberCount: 1000,
         shopSaleCount: 2000,
       }
+      getShopDetail({ id: this.shop.shopId }).then(res => {
+        if (res.status) {
+          this.shop = res.data;
+          // shopId赋值两遍是为了防止从后端拿完数据后覆盖掉
+          this.shop.shopId = this.$route.params.shopId;
+        } else {
+          if (res.statusText) {
+            ElMessage.error(res.statusText);
+          } else {
+            ElMessage.error('未知错误, Status: ' + res.status);
+
+          }
+        }
+      });
     },
-    getShopGoodsList() {
+    getShopProductsRequest() {
+      this.shop.shopId = this.$route.params.shopId;
+      console.log(this.shop.params.shopId);
+
       this.goods = [
         {
           productId: 1,
@@ -108,7 +135,60 @@ export default {
           isHot: true,
         },
       ];
-    }
+      getShopProducts({ id: this.shop.shopId }).then(res => {
+        if (res.status) {
+          this.goods = res.data;
+        } else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+      });
+    },
+    subscribeShopRequest() {
+			subscribeShop({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('关注店铺成功');
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+
+					}
+				}
+			});
+			this.checkShopSubscribedRequest();
+		},
+		cancelSubscribingShopRequest() {
+			cancelSubscribingShop({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
+				if (res.status === '200') {
+					ElMessage.success('取消关注店铺成功');
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+			this.checkShopSubscribedRequest();
+		},
+    checkShopSubscribedRequest() {
+			checkShopSubscribed({ userName: localStorage.getItem['loginUserName'], sid: this.goods.shopId }).then(res => {
+				if (res.status === '200') {
+					this.shopSubscribed = res.data;
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+					}
+				}
+			});
+		}
   },
 };
 </script>

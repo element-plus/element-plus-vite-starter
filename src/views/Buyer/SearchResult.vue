@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { searchGoods, searchShops } from '../../api/apis';
 import Postcard from '../../assets/postcard.jpg'
 import Postcard2 from '../../assets/postcard2.jpg'
 
@@ -39,16 +39,13 @@ export default {
 			Postcard2,
 			goods: [],
 			shops: [],
-			getResultUrl: '',
 		}
 	},
 	methods: {
+		searchGoods,
+		searchShops,
 		getResult() {
-			// axios.get(this.getGoodsUrl, {
-			// 	headers: { 'Content-Type': 'application/json'}
-			// }).then(res => {
-			// 	this.goods = res.data;
-			// })
+			let keywords = this.$route.params.keyword;
 			this.goods = [
 				{
 					productId: 1,
@@ -80,12 +77,12 @@ export default {
 					productImageBig: this.Postcard,
 					salePrice: 810.114,
 				},
-			],
+			];
 			this.shops = [
 				{
 					shopId: 1,
 					shopName: 'Cygames',
-					// 商店图片取最多四张
+					// 商店图片取最多四张，即长度不超过4的图片路径数组(String)
 					shopGoodsImage: [Postcard],
 					shopSubscriberCount: 1000,
 					shopSaleCount: 2000,
@@ -114,7 +111,32 @@ export default {
 					shopSubscriberCount: 1000,
 					shopSaleCount: 2000,
 				}
-			]
+			];
+			searchGoods({keywords: keywords}).then(res => {
+				if (res.status === '200') {
+					this.goods = res.data;
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+
+					}
+				}
+			});
+
+			searchShops({keywords: keywords}).then(res => {
+				if (res.status === '200') {
+					this.shops = res.data;
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+
+					}
+				}
+			})
 		}
 	},
 	mounted() {
@@ -125,12 +147,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.carousel {
-	// background-color: var(--ep-color-warning-light-3);
-	margin-left: 20%;
-	margin-right: 20%;
-}
-
 .goods-box {
 	>div {
 		float: left;
