@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { getAllGoods } from '../../api/apis';
 import Postcard from '../../assets/postcard.jpg'
 import Postcard2 from '../../assets/postcard2.jpg'
 
@@ -40,12 +40,8 @@ export default {
 		}
 	},
 	methods: {
-		getAllGoods() {
-			// axios.get(this.getGoodsUrl, {
-			// 	headers: { 'Content-Type': 'application/json'}
-			// }).then(res => {
-			// 	this.goods = res.data;
-			// })
+		getAllGoods,
+		getAllGoodsRequest() {
 			this.goods = [
 				{
 					productId: 1,
@@ -78,11 +74,24 @@ export default {
 					salePrice: 810.114,
 				},
 			];
-			
+
+			getAllGoods().then((res) => {
+				console.log(res);
+				if (res.status === '200') {
+					this.goods = res.data
+				} else {
+					if (res.statusText) {
+						ElMessage.error(res.statusText);
+					} else {
+						ElMessage.error('未知错误, Status: ' + res.status);
+
+					}
+				}
+			});
 		}
 	},
 	mounted() {
-		this.getAllGoods();
+		this.getAllGoodsRequest();
 	}
 
 }

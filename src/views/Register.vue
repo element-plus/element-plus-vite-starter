@@ -32,13 +32,15 @@
 </template>
 
 <script>
+import { ElMessage } from 'element-plus'
 import LoginPage from '../assets/LoginPage.png'
-import axios from 'axios';
+import { userRegister } from '../api/apis';
 
 export default {
   data() {
     return {
       LoginPage,
+      ElMessage,
       dataForm: {
         userType: 'buyer',
         userName: '',
@@ -60,28 +62,44 @@ export default {
     }
   },
   methods: {
-    // 提交表单
+    userRegister,
+    // Login
     dataFormSubmit() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          // axios.post(this.registerUrl, this.dataForm, {
-          //   headers: {
-          //     'Content-Type': 'application/json'
-          //   }
-          // }).then((res) => {
-          //   if (res.data.accessToken) {
-          //     localStorage.setItem('Authorization', 'bearer ' + res.data.accessToken)
-          //     // 路由到主页 replace 是页面替换 一般可以用于局部组件路由
-          //     // push 是整体 推 页面
-          //     this.$router.replace({name: 'home'})
-          //   } else {
-          //     this.$router.replace({name: 'login'})
-          //   }
-          // })
+          userRegister(this.dataForm).then(res => {
+            console.log(res);
+            if (res.status === '200') {
+              // localStorage.setItem['loginUserName'] = this.dataForm.userName;
+              // localStorage.setItem['loginUserType'] = this.dataForm.userType;
+              ElMessage.success(res.statusText);
+              this.$router.push({ path: '/login' })
+            } else {
+              if (res.statusText) {
+                ElMessage.error(res.statusText);
+              } else {
+                ElMessage.error('未知错误, Status: ' + res.status);
+
+              }
+            }
+          }).catch(error => {
+            if (error.response) {
+              // 请求已发出，但服务器响应了状态码不在2xx范围内
+              console.error('Error status', error.response.status);
+              console.error('Error data', error.response.data);
+            } else if (error.request) {
+              // 请求已发出，但没有收到响应
+              console.error('No response received', error.request);
+            } else {
+              // 请求配置时出现错误
+              console.error('Error', error.message);
+            }
+          });
         }
       })
     },
     LoginClick() {
+      // ElMessage.success('Sucess?');
       this.$router.replace({ path: '/login' });
       // console.log(this.activeName);
     },

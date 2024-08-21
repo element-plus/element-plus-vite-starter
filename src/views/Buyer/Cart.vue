@@ -125,20 +125,6 @@ export default {
 					seleced:false,
 				},
 			];
-			this.addressList=[
-				{
-					addressId:1,
-					address:学院路37号,
-					recipient:王二,
-					phoneNum:111414141,
-				},
-				{
-					addressId:2,
-					address:学院路34号,
-					recipient:李四,
-					phoneNum:81019191,
-				}
-			];
 			
 		},
       handleQuantityChange(item) {  

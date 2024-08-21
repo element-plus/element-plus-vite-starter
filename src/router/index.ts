@@ -1,5 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import Homepage from '../views/Buyer/Homepage.vue';
+import Reviewpage from '~/views/Buyer/Reviewpage.vue';
+import path from 'path';
+import { compile } from 'vue';
 
 const routes = [
   {
@@ -19,17 +22,17 @@ const routes = [
     component: () => import("../views/Register.vue")
   },
   {
-    path: '/goodsDetail', 
+    path: '/goodsDetail/:goodsId', 
     name: 'goodsDetail',
     component: () => import("../views/Details/GoodsDetail.vue")
   },
   {
-    path: '/shopDetail',
+    path: '/shopDetail/:shopId',
     name: 'shopDetail',
     component: ()=>import("../views/Details/ShopDetail.vue")
   },
   {
-    path: '/Search',
+    path: '/Search/:keyword',
     name: 'Search',
     component: () => import("../views/Buyer/SearchResult.vue")
   },
@@ -42,7 +45,28 @@ const routes = [
     path:'/address',
     name:'address',
     component:()=>import("../views/Buyer/Address.vue")
+  },
+  {
+    path: '/Comment',
+    name: 'Comment',
+    component: () => import("../views/Buyer/Commentpage.vue")
+  },
+  {
+    path: '/Seller/AddGoods',
+    name: 'AddGoods',
+    component: () => import("../views/Seller/AddGoods.vue")
+  },
+  {
+    path: '/Seller/EditGoods',
+    name: 'EditGoods',
+    component: () => import("../views/Seller/EditGoods.vue")
+  },
+  {
+    path: '/Seller/Goodslist',
+    name: 'Goodslist',
+    component: () => import("../views/Seller/GoodsList.vue")
   }
+
 ];
 
 const router = createRouter({

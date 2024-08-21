@@ -21,17 +21,6 @@
 					<el-col :span="12">总销量 {{ msg.shopSaleCount }}</el-col>
 				</el-row>
 			</div>
-			<!-- <h3 class="sub-title ellipsis">{{ msg.subTitle }}</h3> -->
-			<!-- <div class="good-price pr">
-				<div class="ds pa good-btn">
-					<el-button @click="openShop(msg.shopId)" style="margin: 0 20px" type="primary"
-						size="small">查看详情</el-button>
-					<el-button style="margin: 0 20px" size="small"
-						@btnClick="addCart(msg.shopId, msg.salePrice, msg.productName, msg.productImageBig)"
-						type="info">加入购物车</el-button>
-				</div>
-				<p><span style="font-size:14px">￥</span>{{ Number(msg.salePrice).toFixed(2) }}</p>
-			</div> -->
 		</div>
 	</div>
 </template>
@@ -39,13 +28,11 @@
 <script>
 export default {
 	props: {
-		msg: {
-			// salePrice: 0
-		}
+		msg: {}
 	},
 	methods: {
 		openShop(id) {
-			this.$router.push({ path: 'shopDetail' });
+			this.$router.replace({ path: '/shopDetail/' + id });
 			// this.goodsDetails(id);
 			// window.open('//' + window.location.host + '/goodsDetail?shopId=' + id)
 		},
