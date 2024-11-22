@@ -1,30 +1,57 @@
 name: GitHub Pages
+
 on:
   push:
     branches:
       - main
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: "14.x"
+          run_install: true
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
 
       - name: Build
         run: npm run build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: ⏫ Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
+          path: ./dist
+          
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 🪤 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
