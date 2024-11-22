@@ -10,10 +10,15 @@ This is an example of on-demand element-plus with [unplugin-vue-components](http
 
 If you just want an on-demand import example `manually`, you can check [unplugin-element-plus/examples/vite](https://github.com/element-plus/unplugin-element-plus/tree/main/examples/vite).
 
+If you want to a nuxt starter, see [element-plus-nuxt-starter](https://github.com/element-plus/element-plus-nuxt-starter/).
+
 ## Project setup
 
 ```bash
-npm install
+pnpm install
+
+# npm install
+# yarn install
 ```
 
 ### Compiles and hot-reloads for development
