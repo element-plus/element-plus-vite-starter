@@ -33,7 +33,7 @@ const handleClose = (key: string, keyPath: string[]) => {
       </template>
       <el-menu-item-group>
         <template #title><span>Group One</span></template>
-        <el-menu-item index="1-1">item one</el-menu-item>
+        <el-menu-item index="/nav/1/item-1">item one</el-menu-item>
         <el-menu-item index="1-2">item two</el-menu-item>
       </el-menu-item-group>
       <el-menu-item-group title="Group Two">

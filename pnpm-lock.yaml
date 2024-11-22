@@ -27,6 +27,9 @@ importers:
       '@iconify-json/ep':
         specifier: ^1.2.1
         version: 1.2.1
+      '@iconify-json/ri':
+        specifier: ^1.2.3
+        version: 1.2.3
       '@types/node':
         specifier: ^20.17.6
         version: 20.17.6
@@ -389,6 +392,9 @@ packages:
 
   '@iconify-json/ep@1.2.1':
     resolution: {integrity: sha512-m72jNpdlWI7Wd3TPs3RUd6nPiU1WWnWSvpOkM67HWNsyQrZDlTtLstLF9hAK8nhOxENi6ZO670A16mDvWJD9Cw==}
+
+  '@iconify-json/ri@1.2.3':
+    resolution: {integrity: sha512-UVKofd5xkSevGd5K01pvO4NWsu+2C9spu+GxnMZUYymUiaWmpCAxtd22MFSpm6MGf0MP4GCwhDCo1Q8L8oZ9wg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1818,6 +1824,10 @@ snapshots:
   '@floating-ui/utils@0.2.8': {}
 
   '@iconify-json/ep@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/ri@1.2.3':
     dependencies:
       '@iconify/types': 2.0.0
 
