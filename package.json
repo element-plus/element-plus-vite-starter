@@ -2,6 +2,7 @@
   "name": "element-plus-vite-starter",
   "private": true,
   "version": "0.1.0",
+  "packageManager": "pnpm@9.14.2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
