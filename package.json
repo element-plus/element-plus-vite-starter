@@ -15,7 +15,8 @@
     "@element-plus/icons-vue": "^2.3.1",
     "@vueuse/core": "^11.3.0",
     "element-plus": "^2.8.8",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@iconify-json/ep": "^1.2.1",
@@ -25,6 +26,7 @@
     "typescript": "^5.6.3",
     "unocss": "^0.64.1",
     "unplugin-vue-components": "^0.27.4",
+    "unplugin-vue-router": "^0.10.8",
     "vite": "^5.4.11",
     "vite-ssg": "^0.24.1",
     "vue-tsc": "^2.1.10"

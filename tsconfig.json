@@ -4,7 +4,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -14,7 +14,11 @@
     "paths": {
       "~/*": ["src/*"]
     },
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "vite/client",
+      "unplugin-vue-router/client"
+    ]
   },
   "vueCompilerOptions": {
     "target": 3

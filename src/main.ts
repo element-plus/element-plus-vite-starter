@@ -15,6 +15,13 @@ import "uno.css";
 // If you want to use ElMessage, import it.
 import "element-plus/theme-chalk/src/message.scss";
 
+import { createRouter, createWebHistory } from 'vue-router'
+import { routes } from 'vue-router/auto-routes'
+
 const app = createApp(App);
+app.use(createRouter({
+  history: createWebHistory(),
+  routes,
+}))
 // app.use(ElementPlus);
 app.mount("#app");

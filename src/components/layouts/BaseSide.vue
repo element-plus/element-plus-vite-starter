@@ -1,5 +1,24 @@
+<script lang="ts" setup>
+import { ref } from "vue";
+import {
+  Location,
+  Document,
+  Menu as IconMenu,
+  Setting,
+} from "@element-plus/icons-vue";
+
+const isCollapse = ref(true);
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath);
+};
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath);
+};
+</script>
+
 <template>
   <el-menu
+    router
     default-active="1"
     class="el-menu-vertical-demo"
     @open="handleOpen"
@@ -25,7 +44,7 @@
         <el-menu-item index="1-4-1">item one</el-menu-item>
       </el-sub-menu>
     </el-sub-menu>
-    <el-menu-item index="2">
+    <el-menu-item index="/nav/2">
       <el-icon>
         <IconMenu />
       </el-icon>
@@ -37,7 +56,7 @@
       </el-icon>
       <template #title>Navigator Three</template>
     </el-menu-item>
-    <el-menu-item index="4">
+    <el-menu-item index="/nav/4">
       <el-icon>
         <Setting />
       </el-icon>
@@ -46,20 +65,3 @@
   </el-menu>
 </template>
 
-<script lang="ts" setup>
-import { ref } from "vue";
-import {
-  Location,
-  Document,
-  Menu as IconMenu,
-  Setting,
-} from "@element-plus/icons-vue";
-
-const isCollapse = ref(true);
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
-</script>
