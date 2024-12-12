@@ -1,7 +1,7 @@
 <template>
   <el-config-provider namespace="ep">
     <BaseHeader />
-    <div class="flex main-container">
+    <div class="main-container flex">
       <BaseSide />
       <div w="full" py="4">
         <RouterView />
