@@ -4,11 +4,10 @@
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
     "useDefineForClassFields": true,
-    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "types": [
