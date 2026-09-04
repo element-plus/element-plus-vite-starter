@@ -46,16 +46,16 @@ import { toggleDark } from '~/composables'
     <el-menu-item index="4">
       Orders
     </el-menu-item>
-    <el-menu-item h="full" index="theme-toggle">
+    <el-menu-item class="h-full flex p-0" index="theme-toggle">
       <button
-        class="w-full cursor-pointer border-none bg-transparent" style="height: var(--ep-menu-item-height)"
+        class="w-full flex-1 cursor-pointer border-none bg-transparent px-[var(--ep-menu-base-level-padding)]" style="height: var(--ep-menu-item-height)"
         @click.stop="toggleDark()"
       >
         <i inline-flex i="dark:ep-moon ep-sunny" />
       </button>
     </el-menu-item>
-    <el-menu-item h="full" index="github-toggle">
-      <a class="size-full flex items-center justify-center" :href="repository.url" target="_blank" @click.stop>
+    <el-menu-item class="h-full p-0" index="github-toggle">
+      <a class="size-full flex items-center justify-center px-[var(--ep-menu-base-level-padding)]" :href="repository.url" target="_blank" @click.stop>
         <div i-ri-github-fill />
       </a>
     </el-menu-item>
