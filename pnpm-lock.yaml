@@ -52,7 +52,7 @@ importers:
         specifier: ^1.103.1
         version: 1.103.1
       typescript:
-        specifier: ^6.0.3
+        specifier: ~6.0.3
         version: 6.0.3
       unocss:
         specifier: ^66.9.2
